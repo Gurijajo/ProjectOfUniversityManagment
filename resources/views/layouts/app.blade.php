@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Dashboard</title>
+  <title>{{!empty($header_title) ? $header_title : '' }} - IBSU</title>
 
   <!-- Google Font: Source Sans Pro -->
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
@@ -25,39 +25,17 @@
   <link rel="stylesheet" href="{{url('/public/plugins/daterangepicker/daterangepicker.css')}}">
   <!-- summernote -->
   <link rel="stylesheet" href="{{url('/public/plugins/summernote/summernote-bs4.min.css')}}">
+  @yield('style')
 </head>
 <body class="hold-transition sidebar-mini layout-fixed">
 <div class="wrapper">
-
-  <!-- Preloader -->
   <div class="preloader flex-column justify-content-center align-items-center">
-    <img class="animation__shake" src="{{url('/public/dist/img/AdminLTELogo.png')}}" alt="AdminLTELogo" height="60" width="60">
+    <img class="animation__shake" src="{{url('/public/dist/img/ibsulogo.jpg')}}" alt="ibsulogo" height="120" width="120">
   </div>
-
-  <!-- Navbar -->
     @include('layouts.header')
-  <!-- /.navbar -->
-
-  <!-- Main Sidebar Container -->
-
-
-  <!-- Content Wrapper. Contains page content -->
-
-  <!-- /.content-wrapper -->
-    
-
     @yield('content')
-
     @include('layouts.footer')
-
-  <!-- Control Sidebar -->
-
-  <!-- /.control-sidebar -->
 </div>
-<!-- ./wrapper -->
-
-<!-- jQuery -->
-<!-- jQuery -->
 <script src="{{url('/public/plugins/jquery/jquery.min.js')}}"></script>
 <!-- jQuery UI 1.11.4 -->
 <script src="{{url('/public/plugins/jquery-ui/jquery-ui.min.js')}}"></script>
@@ -88,9 +66,10 @@
 <!-- AdminLTE App -->
 <script src="{{url('/public/dist/js/adminlte.js')}}"></script>
 <!-- AdminLTE for demo purposes -->
-<script src="{{url('/public/dist/js/demo.js')}}"></script>
+
 <!-- AdminLTE dashboard demo (This is only for demo purposes) -->
 <script src="{{url('/public/dist/js/pages/dashboard.js')}}"></script>
 
+@yield('script')
 </body>
 </html>
