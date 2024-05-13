@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
-
+use Request;
 class User extends Authenticatable
 {
     use HasApiTokens, HasFactory, Notifiable;
@@ -42,11 +42,35 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
     ];
 
+    static public function getSingle($id){
+        return self::find($id); 
+    }
+
+
+    static public function getAdmin()
+    {
+        $return = self::select('users.*')->where('user_type', '=',1);
+                    if(!empty(Request::get('name'))){
+                        $return = $return->where('name','LIKE','%'.Request::get('name').'%');
+                    }
+
+                    if(!empty(Request::get('email'))){
+                        $return = $return->where('email','LIKE','%'.Request::get('email').'%');
+                    }
+                    // if(!empty(Request::get('date'))){
+                    //     $return = $return->whereDate('created_at','=',Request::get('created_at'));
+                    // }
+
+        $return = $return->orderBy('id','desc')->paginate(10);
+
+        return $return;
+    }
+
     static public function getEmailsingle($email){
         return User::where('email', '=', $email)->first();
     }
 
-    static public function getTokensingle($remember_token){
+        static public function getTokensingle($remember_token){
         return User::where('remember_token', '=', $remember_token)->first();
     }
 }
