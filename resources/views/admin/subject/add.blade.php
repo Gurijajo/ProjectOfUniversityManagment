@@ -7,7 +7,7 @@
       <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm-6">
-            <h1>Add New Class</h1>
+            <h1>Add New Subject</h1>
           </div>
         </div>
       </div>
@@ -22,13 +22,20 @@
                 {{ csrf_field() }}
                 <div class="card-body">
                     <div class="form-group">
-                        <label>Class Name</label>
-                        <input type="text" class="form-control" name="name" required placeholder="Class Name">
+                        <label>Subject Name</label>
+                        <input type="text" class="form-control" name="name" required placeholder="Subject Name">
                     </div>  
+                    <div class="form-group">
+                        <label>Subject Type</label>
+                        <select class="form-control" name="type" required>
+                            <option value="">Select Type</option>
+                            <option value="Practical">Practical</option>
+                            <option value="Theoritical">Theoritical</option>
+                        </select>
+                    </div> 
                     <div class="form-group">
                         <label>Status</label>
                         <select class="form-control" name="status">
-                            
                             <option value="0">Active</option>
                             <option value="1">Inactive</option>
                         </select>

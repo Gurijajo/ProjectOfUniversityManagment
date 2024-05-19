@@ -7,7 +7,7 @@
       <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm-6">
-            <h1>Edit Class</h1>
+            <h1>Edit Subject</h1>
           </div>
         </div>
       </div>
@@ -22,13 +22,21 @@
                 {{ csrf_field() }}
                 <div class="card-body">
                     <div class="form-group">
-                        <label>Class Name</label>
-                        <input type="text" class="form-control" name="name" value="{{old('name', $getRecord->name)}}" required placeholder="Class Name">
+                        <label>Subject Name</label>
+                        <input type="text" class="form-control" name="name" value="{{old('name', $getRecord->name)}}" required placeholder="Subject Name">
                       </div>  
+
+                      <div class="form-group">
+                        <label>Subject Type</label>
+                        <select class="form-control" name="type" required>
+                            <option  value="">Select Type</option>
+                            <option {{($getRecord->type == 'Practical') ? 'selected' : '' }} value="Practical">Practical</option>
+                            <option {{($getRecord->type == 'Theoritical') ? 'selected' : '' }} value="Theoritical">Theoritical</option>
+                        </select>
+                        </div>
                       <div class="form-group">
                         <label>Status</label>
                         <select class="form-control" name="status">
-                            
                             <option {{($getRecord->status == '0') ? 'selected' : '' }} value="0">Active</option>
                             <option {{($getRecord->status == '1') ? 'selected' : '' }} value="1">Inactive</option>
                         </select>
