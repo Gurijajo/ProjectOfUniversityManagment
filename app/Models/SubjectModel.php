@@ -27,7 +27,7 @@ class SubjectModel extends Model
                                     }
                                 $return = $return->where('subject.is_delete', '=', 0)
                                     ->orderBy('subject.id','desc')
-                                    ->paginate(20);
+                                    ->paginate(15);
 
         return $return;
     }

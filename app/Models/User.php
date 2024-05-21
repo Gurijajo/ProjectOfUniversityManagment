@@ -73,4 +73,44 @@ class User extends Authenticatable
         static public function getTokensingle($remember_token){
         return User::where('remember_token', '=', $remember_token)->first();
     }
+    static public function getStudent()
+    {
+        $return = self::select('users.*', 'class.name as class_name')->join('class', 'class.id', '=', 'users.class_id', 'left')->where('users.user_type', '=',3)->where('users.is_delete', '=', 0);
+        if(!empty(Request::get('name')))
+        {
+         $return = $return->where('users.name', 'like', '%' .Request::get('name').'%');
+        }
+        
+        if(!empty(Request::get('lastname')))
+        {
+        $return = $return->where('users.lastname', 'like', '%' .Request::get('lastname').'%');
+        }
+        if(!empty(Request::get('email')))
+        {
+          $return = $return->where('users.email', 'like', '%' .Request::get('email').'%');
+        }       
+        if(!empty(Request::get('class')))
+        {
+         $return = $return->where('class.name', 'like', '%' .Request::get('class').'%');
+         }
+         if(!empty(Request::get('status')))
+         {
+          $status = (Request::get('status') == 0) ? 0 : 1;
+          $return = $return->whereDate('users.status', '=', $status);
+          }
+        $return = $return->orderBy('users.id','desc')->paginate(10);
+
+        return $return;
+    }
+
+    public function getProfile()
+    {
+        if (!empty($this->profile_pic) && file_exists('upload/profile/' . $this->profile_pic)) {
+            return url('upload/profile/' . $this->profile_pic);
+        } else {
+            return "";
+        }
+    }
+    
+
 }

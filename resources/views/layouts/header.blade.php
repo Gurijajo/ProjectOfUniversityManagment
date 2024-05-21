@@ -144,6 +144,14 @@
             </a>
           </li>
           <li class="nav-item">
+            <a href="{{url('admin/student/list')}}" class="nav-link @if(Request::segment(2)=='student') active @endif">
+              <i class="nav-icon fas fa-backpack-fill"></i>
+              <p>   
+                Student
+              </p>
+            </a>
+          </li>
+          <li class="nav-item">
             <a href="{{url('admin/subject/list')}}" class="nav-link @if(Request::segment(2)=='subject') active @endif">
               <i class="nav-icon fas fa-book"></i>
               <p>   
@@ -153,7 +161,7 @@
           </li>
           <li class="nav-item">
             <a href="{{url('admin/assign_subject/list')}}" class="nav-link @if(Request::segment(2)=='assign_subject') active @endif">
-              <i class="nav-icon fas fa-book"></i>
+              <i class="nav-icon fas fa-archive"></i>
               <p>   
                 Assign Subject
               </p>
@@ -161,7 +169,7 @@
           </li>
           <li class="nav-item">
             <a href="{{ url('admin/change_password') }}" class="nav-link @if(Request::segment(2) == 'change_password') active @endif">
-              <i class="nav-icon far fa-user"></i>
+              <i class="nav-icon fas fa-arrow-repeat"></i>
               <p>
                 Change password
               </p>

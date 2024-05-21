@@ -29,7 +29,7 @@ class ClassModel extends Model
     }
 
     static public function getClass(){
-        $return = ClassModel::select('class.*')
+        $return = ClassModel::select('class.*', )
                                     ->join('users','users.id','=','created_by')
                                     ->where('class.is_delete', '=', 0)
                                     ->where('class.status', '=', 0)

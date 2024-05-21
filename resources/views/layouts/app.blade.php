@@ -65,9 +65,6 @@
 <script src="{{url('/public/plugins/overlayScrollbars/js/jquery.overlayScrollbars.min.js')}}"></script>
 <!-- AdminLTE App -->
 <script src="{{url('/public/dist/js/adminlte.js')}}"></script>
-<!-- AdminLTE for demo purposes -->
-
-<!-- AdminLTE dashboard demo (This is only for demo purposes) -->
 <script src="{{url('/public/dist/js/pages/dashboard.js')}}"></script>
 
 @yield('script')
