@@ -9,6 +9,7 @@ use App\Http\Controllers\AdminController;
 use App\Http\Controllers\ClassSubjectController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\StudentController;
+use App\Http\Controllers\ParentController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -85,6 +86,15 @@ Route::group(['middleware' => 'admin'], function(){
     Route::get('admin/change_password', [UserController::class, 'change_password']);
 	Route::post('admin/change_password', [UserController::class, 'update_change_password']);
 
+
+    //parent
+    Route::get('admin/parent/list', [ParentController::class,'list']);
+    Route::get('admin/parent/add', [ParentController::class,'add']);
+    Route::post('admin/parent/add', [ParentController::class,'insert']);
+    Route::get('admin/parent/edit/{id}', [ParentController::class,'edit']);
+    Route::post('admin/parent/edit/{id}', [ParentController::class,'update']);
+    Route::get('admin/parent/delete/{id}', [ParentController::class,'delete']);
+    Route::get('admin/parent/my-student/{id}', [ParentController::class,'myStudent']);
 
 });
 

@@ -111,6 +111,33 @@ class User extends Authenticatable
             return "";
         }
     }
+
+    static public function getParent()
+    {
+        $return = self::select('users.*')->where('users.user_type', '=',4)->where('users.is_delete', '=', 0);
+        if(!empty(Request::get('name')))
+        {
+         $return = $return->where('users.name', 'like', '%' .Request::get('name').'%');
+        }
+        
+        if(!empty(Request::get('lastname')))
+        {
+        $return = $return->where('users.lastname', 'like', '%' .Request::get('lastname').'%');
+        }
+        if(!empty(Request::get('email')))
+        {
+          $return = $return->where('users.email', 'like', '%' .Request::get('email').'%');
+        }       
+         if(!empty(Request::get('status')))
+         {
+          $status = (Request::get('status') == 0) ? 0 : 1;
+          $return = $return->whereDate('users.status', '=', $status);
+          }
+        $return = $return->orderBy('users.id','desc')->paginate(10);
+
+        return $return;
+    }
+
     
 
 }

@@ -152,6 +152,14 @@
             </a>
           </li>
           <li class="nav-item">
+            <a href="{{url('admin/parent/list')}}" class="nav-link @if(Request::segment(2)=='parent') active @endif">
+              <i class="nav-icon fas fa-backpack-fill"></i>
+              <p>   
+                Parent
+              </p>
+            </a>
+          </li>
+          <li class="nav-item">
             <a href="{{url('admin/subject/list')}}" class="nav-link @if(Request::segment(2)=='subject') active @endif">
               <i class="nav-icon fas fa-book"></i>
               <p>   

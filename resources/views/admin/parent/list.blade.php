@@ -8,10 +8,10 @@
       <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm-6">
-            <h1>Student List (Total: {{ $getRecord->Total()}})</h1>
+            <h1>Parent List (Total: {{ $getRecord->Total()}})</h1>
           </div>
           <div class="col-sm-6" style="text-align: right">
-            <a href="{{url('admin/student/add')}}" class="btn btn-primary">Add New Student</a>
+            <a href="{{url('admin/parent/add')}}" class="btn btn-primary">Add New Parent</a>
           </div>
         </div>
       </div><!-- /.container-fluid -->
@@ -24,13 +24,13 @@
           <div class="col-md-12">
 
             <div class="card-header">
-              <h3 class="card-title">Search Student</h3>
+              <h3 class="card-title">Search Parent</h3>
             </div>
             <form action="" method="get">
               <div class="card-body">
                 <div class="row">
                   <div class="form-group col-md-3">
-                    <label for="">Name</label>
+                    <label for="">First Name</label>
                     <input type="text" class="form-control" value="{{Request::get('name')}}" name="name" placeholder="Name">
                   </div>
                   <div class="form-group col-md-3">
@@ -41,10 +41,10 @@
                     <label for="">Email</label>
                     <input type="text" name="email" class="form-control" value="{{Request::get('email')}}" placeholder="Email">
                   </div>
-                  <div class="form-group col-md-2">
+                  {{-- <div class="form-group col-md-2">
                     <label>Class</label> 
                     <input type="text" class="form-control" name="class" value="{{ Request::get('class') }}" placeholder="Class">
-                    </div>
+                    </div> --}}
                   {{-- <div class="form-group col-md-2">
                     <label>Gender</label>
                     <select class="form-control" name="gender">
@@ -64,7 +64,7 @@
                     </div>                  --}}
                   <div class="form-group col-md-3">
                     <button class="btn btn-primary" type="submit" style="margin-top: 30px;">Search</button>
-                    <a href="{{url('admin/student/list')}}" class="btn btn-success" style="margin-top: 30px;">Reset </a>
+                    <a href="{{url('admin/parent/list')}}" class="btn btn-success" style="margin-top: 30px;">Reset </a>
                   </div>
                 </div>
               </div>
@@ -74,7 +74,7 @@
 
             <div class="card">
               <div class="card-header">
-                <h3 class="card-title">Student List</h3>
+                <h3 class="card-title">Parent List</h3>
               </div>
               <!-- /.card-header -->
               <div class="card-body p-0" style="overflow: auto;">
@@ -86,13 +86,10 @@
                       <th>First Name</th>
                       <th>Last Name</th>
                       <th>Email</th>
-                      <th>Admission Number</th>
-                      <th>Roll Number</th>
-                      <th>Class</th>
                       <th>Gender</th>
-                      <th>Date of Birth</th>
+                      <th>Occupation</th>
                       <th>Mobile Number</th>
-                      <th>Admission Date</th>
+                      <th>Address</th>
                       <th>Status</th>
                       <th>Created Date</th>
                       <th>Action</th>
@@ -110,28 +107,16 @@
                         <td>{{ $value->name }}</td>
                         <td>{{ $value->lastname }}</td>
                         <td>{{ $value->email }}</td>
-                        <td>{{ $value->admission_number }}</td>
-                        <td>{{ $value->roll_number }}</td>
-                        <td>{{ $value->class_name }}</td>
                         <td>{{ $value->gender }}</td>
-                        <td>
-                              @if(!empty($value->date_of_birth))
-                              {{ date('d-m-Y', strtotime($value->date_of_birth)) }}
-                              @endif
-                        </td>
+                        <td>{{ $value->occupation }}</td>
                         <td>{{ $value->mobile_number }}</td>
-                        <td>
-                              @if(!empty($value->admission_date))
-                              {{ date('d-m-Y', strtotime($value->admission_date)) }}
-                              @endif
-                        </td>
+                        <td>{{ $value->address }}</td>
                         <td>{{ ($value->status == 0) ? 'Active': 'Inactive' }}</td>
                         <td>{{$value->created_at}}</td>
                         <td style="min-width: 150px">
-                          <a href="{{url('admin/student/edit', $value->id)}}" class="btn btn-primary btn-sm">Edit</a>
-            
-                          <a href="{{url('admin/student/delete', $value->id)}}" class="btn btn-danger btn-sm">Delete</a>
-                         
+                          <a href="{{url('admin/parent/edit', $value->id)}}" class="btn btn-primary btn-sm">Edit</a>
+                          <a href="{{url('admin/parent/delete', $value->id)}}" class="btn btn-danger btn-sm">Delete</a>
+                          <a href="{{url('admin/parent/my-student', $value->id)}}" class="btn btn-primary btn-sm">My Student</a>
                         </td>
                       </tr>
                          

@@ -35,7 +35,7 @@
                   </div>
                   <div class="form-group col-md-3">
                     <label for="">Email</label>
-                    <input type="text" name="email" class="form-control" value="{{Request::get('name')}}" placeholder="Email">
+                    <input type="text" name="email" class="form-control" value="{{Request::get('email')}}" placeholder="Email">
                   </div>
                   {{-- <div class="form-group col-md-3">
                     <label for="">Date</label>
