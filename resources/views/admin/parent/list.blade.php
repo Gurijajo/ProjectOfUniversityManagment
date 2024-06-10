@@ -77,7 +77,7 @@
                 <h3 class="card-title">Parent List</h3>
               </div>
               <!-- /.card-header -->
-              <div class="card-body p-0" style="overflow: auto;">
+              <div class="card-body p-0" style="overflow: auto; text-wrap: nowrap;">
                 <table class="table table-striped">
                   <thead>
                     <tr>
@@ -116,7 +116,7 @@
                         <td style="min-width: 150px">
                           <a href="{{url('admin/parent/edit', $value->id)}}" class="btn btn-primary btn-sm">Edit</a>
                           <a href="{{url('admin/parent/delete', $value->id)}}" class="btn btn-danger btn-sm">Delete</a>
-                          <a href="{{url('admin/parent/my-student', $value->id)}}" class="btn btn-primary btn-sm">My Student</a>
+                          {{-- <a href="{{url('admin/parent/my-student', $value->id)}}" class="btn btn-primary btn-sm">My Student</a> --}}
                         </td>
                       </tr>
                          

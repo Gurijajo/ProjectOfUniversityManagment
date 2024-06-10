@@ -1,0 +1,132 @@
+## Project Overview
+
+### Purpose
+The project is designed to manage various aspects of a school, including administration, classes, students, subjects, and more. It includes functionalities for different user roles such as admins, teachers, students, and parents.
+
+### Key Features
+
+1. **Authentication and Authorization**
+   - Login and logout functionalities.
+   - Password recovery and reset.
+   - Role-based access control for different types of users (admin, teacher, student, parent).
+
+2. **Admin Dashboard**
+   - Overview of school management activities.
+   - Access to various management functionalities.
+
+3. **Admin Management**
+   - List, add, edit, and delete admin users.
+
+4. **Class Management**
+   - List, add, edit, and delete classes.
+   - Assign subjects to classes.
+
+5. **Student Management**
+   - List, add, edit, and delete students.
+   - Assign students to parents.
+
+6. **Subject Management**
+   - List, add, edit, and delete subjects.
+
+7. **Parent Management**
+   - List, add, edit, and delete parent records.
+   - View and manage students assigned to parents.
+
+8. **Teacher Management**
+   - List, add, edit, and delete teacher records.
+
+9. **Password Management**
+   - Change password functionality for all user roles.
+   - Contact support for additional help.
+
+10. **Support**
+    - Contact support for teachers, students, and parents.
+
+### Routes Breakdown
+
+#### Authentication Routes
+- **Login**: `GET /`, `POST /login`
+- **Logout**: `GET /logout`
+- **Forgot Password**: `GET /forgot-password`, `POST /forgot-password`
+- **Password Reset**: `GET /reset/{token}`, `POST /reset/{token}`
+
+#### Admin Routes
+- **Dashboard**: `GET /admin/dashboard`
+- **Admin Management**: 
+  - `GET /admin/admin/list`
+  - `GET /admin/admin/add`, `POST /admin/admin/add`
+  - `GET /admin/admin/edit/{id}`, `POST /admin/admin/edit/{id}`
+  - `GET /admin/admin/delete/{id}`
+- **Class Management**:
+  - `GET /admin/class/list`
+  - `GET /admin/class/add`, `POST /admin/class/add`
+  - `GET /admin/class/edit/{id}`, `POST /admin/class/edit/{id}`
+  - `GET /admin/class/delete/{id}`
+- **Student Management**:
+  - `GET /admin/student/list`
+  - `GET /admin/student/add`, `POST /admin/student/add`
+  - `GET /admin/student/edit/{id}`, `POST /admin/student/edit/{id}`
+  - `GET /admin/student/delete/{id}`
+- **Subject Management**:
+  - `GET /admin/subject/list`
+  - `GET /admin/subject/add`, `POST /admin/subject/add`
+  - `GET /admin/subject/edit/{id}`, `POST /admin/subject/edit/{id}`
+  - `GET /admin/subject/delete/{id}`
+- **Assign Subjects**:
+  - `GET /admin/assign_subject/list`
+  - `GET /admin/assign_subject/add`, `POST /admin/assign_subject/add`
+  - `GET /admin/assign_subject/edit/{id}`, `POST /admin/assign_subject/edit/{id}`
+  - `GET /admin/assign_subject/delete/{id}`
+  - `GET /admin/assign_subject/edit_single/{id}`, `POST /admin/assign_subject/edit_single/{id}`
+- **Password Management**:
+  - `GET /admin/change_password`, `POST /admin/change_password`
+- **Parent Management**:
+  - `GET /admin/parent/list`
+  - `GET /admin/parent/add`, `POST /admin/parent/add`
+  - `GET /admin/parent/edit/{id}`, `POST /admin/parent/edit/{id}`
+  - `GET /admin/parent/delete/{id}`
+  - `GET /admin/parent/my-student/{id}`
+  - `POST /admin/parent/assign_student_parent/{student_id}/{parent_id}`
+- **Teacher Management**:
+  - `GET /admin/teacher/list`
+  - `GET /admin/teacher/add`, `POST /admin/teacher/add`
+  - `GET /admin/teacher/edit/{id}`, `POST /admin/teacher/edit/{id}`
+  - `GET /admin/teacher/delete/{id}`
+
+#### Teacher Routes
+- **Dashboard**: `GET /teacher/dashboard`
+- **Password Management**:
+  - `GET /teacher/change_password`, `POST /teacher/change_password`
+- **Support**: `GET /teacher/contact_support`
+
+#### Student Routes
+- **Dashboard**: `GET /student/dashboard`
+- **Password Management**:
+  - `GET /student/change_password`, `POST /student/change_password`
+- **Support**: `GET /student/contact_support`
+
+#### Parent Routes
+- **Dashboard**: `GET /parent/dashboard`
+- **Password Management**:
+  - `GET /parent/change_password`, `POST /parent/change_password`
+- **Support**: `GET /parent/contact_support`
+
+### Summary
+The project is a robust school management system that handles various administrative tasks, manages user roles and permissions, and facilitates smooth operations for different stakeholders such as admins, teachers, students, and parents. Each user role has specific routes and functionalities tailored to their needs, ensuring a comprehensive and user-friendly experience.
+
+
+### Installation 
+- **Unzip Folder
+- **Move To Xampp/htdocs Folder
+- **Turn on Apache and MySQL
+- **Write in Terminal Composer Update\Install
+- **Import Database File to MySQL 
+
+
+### Project Made for Internet Technologies Subject
+- **Proffessor Mr.KAMIL ŻYŁA
+- **Wyższa Szkoła Przedsiębiorczości i Administracji w Lublinie
+- **Authors Guram Jajanidze, Elia Preni, Jugerta ZERELLARI, Haris Kadic
+
+10.06.2024
+

@@ -138,6 +138,76 @@ class User extends Authenticatable
         return $return;
     }
 
-    
+    static public function getSearchStudent(){
+        if(!empty(Request::get('id')) || !empty(Request::get('name')) || !empty(Request::get('lastname')) || !empty(Request::get('email'))){
+            $return = self::select('users.*', 'class.name as class_name', 'parent.name as parent_name')
+            ->join('users as parent', 'parent.id', '=','users.parent_id', 'left')
+            ->join('class', 'class.id', '=', 'users.class_id', 'left')
+            ->where('users.user_type', '=',3)
+            ->where('users.is_delete', '=', 0);
 
+            if(!empty(Request::get('id')))
+            {
+             $return = $return->where('users.id', 'like', '%' .Request::get('id').'%');
+            }
+            
+            if(!empty(Request::get('lastname')))
+            {
+            $return = $return->where('users.lastname', 'like', '%' .Request::get('lastname').'%');
+            }
+            if(!empty(Request::get('email')))
+            {
+              $return = $return->where('users.email', 'like', '%' .Request::get('email').'%');
+            }       
+            if(!empty(Request::get('name')))
+            {
+             $return = $return->where('users.name', 'like', '%' .Request::get('name').'%');
+             }
+            $return = $return->orderBy('users.id','desc')->limit(10)->paginate();
+    
+            return $return;
+        }
+    }
+    
+    // static public function getMyStudent($parent_id){
+    //     $return = self::select('users.*', 'class.name as class_name', 'parent.name as parent_name')
+    //         ->join('users as parent', 'parent.id', '=','users.parent_id', 'left')
+    //         ->join('class', 'class.id', '=', 'users.class_id', 'left')
+    //         ->where('users.user_type', '=',3)
+    //         ->where('users.parent_id', '=',$parent_id)
+    //         ->where('users.is_delete', '=', 0)
+    //         ->orderBy('users.id','desc')
+    //         ->limit(10)->paginate();
+    
+    //         return $return;
+    // }
+
+    static public function getTeacher(){
+        $return = self::select('users.*', 'class.name as class_name')->join('class', 'class.id', '=', 'users.class_id', 'left')->where('users.user_type', '=',2)->where('users.is_delete', '=', 0);
+        if(!empty(Request::get('name')))
+        {
+         $return = $return->where('users.name', 'like', '%' .Request::get('name').'%');
+        }
+        
+        if(!empty(Request::get('lastname')))
+        {
+        $return = $return->where('users.lastname', 'like', '%' .Request::get('lastname').'%');
+        }
+        if(!empty(Request::get('email')))
+        {
+          $return = $return->where('users.email', 'like', '%' .Request::get('email').'%');
+        }       
+        if(!empty(Request::get('class')))
+        {
+         $return = $return->where('class.name', 'like', '%' .Request::get('class').'%');
+         }
+         if(!empty(Request::get('status')))
+         {
+          $status = (Request::get('status') == 0) ? 0 : 1;
+          $return = $return->whereDate('users.status', '=', $status);
+          }
+        $return = $return->orderBy('users.id','desc')->paginate(10);
+
+        return $return;
+    }
 }

@@ -77,7 +77,7 @@
                 <h3 class="card-title">Student List</h3>
               </div>
               <!-- /.card-header -->
-              <div class="card-body p-0" style="overflow: auto;">
+              <div class="card-body p-0" style="overflow: auto; text-wrap: nowrap;">
                 <table class="table table-striped">
                   <thead>
                     <tr>

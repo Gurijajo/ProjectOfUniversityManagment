@@ -3,9 +3,9 @@
 use Monolog\Handler\NullHandler;
 use Monolog\Handler\StreamHandler;
 use Monolog\Handler\SyslogUdpHandler;
+use Illuminate\Support\Facades\Log;
 
 return [
-
     /*
     |--------------------------------------------------------------------------
     | Default Log Channel

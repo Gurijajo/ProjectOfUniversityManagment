@@ -10,6 +10,7 @@ use App\Http\Controllers\ClassSubjectController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\StudentController;
 use App\Http\Controllers\ParentController;
+use App\Http\Controllers\TeacherController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -24,7 +25,7 @@ use App\Http\Controllers\ParentController;
 // Route::get('/', function () {
 //     return view('welcome');
 // });
-
+Route::group(['middleware' => ['web', 'activity']], function () {
 Route::get("/", [AuthController::class, 'login']);
 Route::post('login', [AuthController::class,'AuthLogin']);
 Route::get("logout", [AuthController::class, 'logout']);
@@ -95,7 +96,16 @@ Route::group(['middleware' => 'admin'], function(){
     Route::post('admin/parent/edit/{id}', [ParentController::class,'update']);
     Route::get('admin/parent/delete/{id}', [ParentController::class,'delete']);
     Route::get('admin/parent/my-student/{id}', [ParentController::class,'myStudent']);
-
+    Route::post('admin/parent/assign_student_parent/{student_id}/{parent_id}', [ParentController::class,'AssignParentStudent']);
+    // // Route::get('assign_student_parent_delete/{id}', [ParentController::class, 'AssignStudentParentDelete']);
+   
+    // //teacher
+    Route::get('admin/teacher/list', [TeacherController::class,'list']);
+    Route::get('admin/teacher/add', [TeacherController::class,'add']);
+    Route::post('admin/teacher/add', [TeacherController::class,'insert']);
+    Route::get('admin/teacher/edit/{id}', [TeacherController::class,'edit']);
+    Route::post('admin/teacher/edit/{id}', [TeacherController::class,'update']);
+    Route::get('admin/teacher/delete/{id}', [TeacherController::class,'delete']);
 });
 
 Route::group(['middleware' => 'teacher'], function(){ 
@@ -105,6 +115,7 @@ Route::group(['middleware' => 'teacher'], function(){
 
     Route::get('teacher/change_password', [UserController::class, 'change_password']);
 	Route::post('teacher/change_password', [UserController::class, 'update_change_password']);
+    Route::get('teacher/contact_support', [UserController::class,'contact_support']);
 
 });
 
@@ -115,6 +126,7 @@ Route::group(['middleware' => 'student'], function(){
 
     Route::get('student/change_password', [UserController::class, 'change_password']);
 	Route::post('student/change_password', [UserController::class, 'update_change_password']);
+    Route::get('student/contact_support', [UserController::class,'contact_support']);
 
 
 });
@@ -126,6 +138,8 @@ Route::group(['middleware' => 'parent'], function(){
 
     Route::get('parent/change_password', [UserController::class, 'change_password']);
 	Route::post('parent/change_password', [UserController::class, 'update_change_password']);
+    Route::get('parent/contact_support', [UserController::class,'contact_support']);
 
+});
 
 });

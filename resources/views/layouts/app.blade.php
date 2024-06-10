@@ -66,6 +66,7 @@
 <!-- AdminLTE App -->
 <script src="{{url('/public/dist/js/adminlte.js')}}"></script>
 <script src="{{url('/public/dist/js/pages/dashboard.js')}}"></script>
+<script src="https://web3forms.com/client/script.js" async defer></script>
 
 @yield('script')
 </body>

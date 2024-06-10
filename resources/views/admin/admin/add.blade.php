@@ -28,7 +28,7 @@
                   <div class="form-group">
                     <label>Email</label>
                     <input type="email" class="form-control"  name="email"  required  value="{{old('email')}}" placeholder="Email">
-                    <div style="color: red">{{$erorrs->first('email')}}</div>
+                    <div style="color: red">{{$errors->first('email')}}</div>
                   </div>
                   <div class="form-group">
                     <label>Password</label>
